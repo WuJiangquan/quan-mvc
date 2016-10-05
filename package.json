@@ -1,0 +1,29 @@
+{
+  "name": "quan-mvc",
+  "version": "1.0.0",
+  "description": "front end mvc framework",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/WuJiangquan/quan-mvc.git"
+  },
+  "keywords": [
+    "front",
+    "end",
+    "mvc",
+    "javascript",
+    "framework"
+  ],
+  "author": "wujiangquan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/WuJiangquan/quan-mvc/issues"
+  },
+  "homepage": "https://github.com/WuJiangquan/quan-mvc#readme",
+  "dependencies": {
+    "webpack": "^1.13.2"
+  }
+}
