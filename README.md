@@ -89,4 +89,32 @@ a front end mvc framework base on [webpack](http://webpack.github.io/docs/amd.ht
         }
       }
     })
+### form 
+    BaseForm类是继承BaseModel的子类。不同之处在于：
+    1. 字段定义时需要指定selector属性，这个属性必须是一个css的id选择器，在表单提交时，我会自动根据设置的id选择器去
+       获取表单的值。
+    2. BaseForm的子类必须设置重写成员变量action和method,如果子类action 字段缺省，则提交时无法知道该提交到什么地方。
+       如果子类的method成员属性值缺省，则默认为post方法提交。调用这个类对象时可以通过成员方法setAction,setMethod对
+       action和method重新赋值。
+    3. submit方法，用来提交表单。参数是一个回调函数，如果发生错误，回调函数的第一个参数值errmsg会有相应的错误原因，否
+       则这个参数值为空。第二个参数 result会赋返回值。
+
+### template 参考：  [front-end-template-engine](https://github.com/WuJiangquan/front-end-template-engine)
+     template是一个方法，用来解析模版，用法跟underscore的template完全一致。源代码就是从underscore偷过来的。具体的使用请
+     查看我的另一个工程 front-end-template-engine
+     
+### collector
+     collector类似于ext的store，用来在内存存储数据的。它提供了如下接口：
+     1. loadMoreItems，调用子类重写的doLoadMore去加载数据，数据加载成功之后会根据设置的Model封装成很多个items，并且对每条
+        数据做mapping处理。
+        参数是一个回调函数，如果这个collector设置了分页，则回调函数会获得最后一页的数据，否则会获得所有数据。
+     2. reLoadMoreItems,清空之前的所有items 然后重新调用loadMoreItems去加载数据。参数与loadMoreItems一致。
+     3. clear 清空collector的所有items。无参数，无返回值
+     4. 设置分页，在子类重写isInPage成员属性，值为true就是分页。分页可以调用loadFirstPage、loadNextPageloadPrevPage、
+        loadLastPage、loadIndexPage加载响应的页面的数据。
+### ajax
+    ajax提供了get、post方法。参数与jquery的ajax 一致。
+    另外可以使用setHeader 方法对http头部进行设置。需要两个参数，第一个是name,设置的头部域名称，第二个参数value，头部的域值
+## 说明
+   这个项目是基于webpack进行模块化开发的，构建项目时，可以使用gulp和webpack搭配。具体的例子可以参考 [webpack-gulp-example](https://github.com/WuJiangquan/webpack-gulp-example)
         
